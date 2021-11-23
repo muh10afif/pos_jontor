@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery Number Divider Plugin Demos</title>
+    <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+    <!-- Plugins -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript" src="dist/number-divider.min.js"></script>
+    <!--Styles-->
+    <style type="text/css">
+    body { background-color:#fafafa; font-family:'Roboto';}
+    .container { margin:150px auto;}
+        .form-example {
+            padding: 10px;
+            background: lightsteelblue;
+            display: inline-block;
+            border-radius: 5px;
+        }
+        .important {
+            background: green;
+            padding: 5px;
+            color: white;
+            display: initial;
+        }
+    </style>
+</head>
+<body>
+<div id="jquery-script-menu">
+<div class="jquery-script-center">
+<ul>
+<li><a href="http://www.jqueryscript.net/other/jQuery-Plugin-For-Custom-Number-Separator-Number-Divider.html">Download This Plugin</a></li>
+<li><a href="http://www.jqueryscript.net/">Back To jQueryScript.Net</a></li>
+</ul>
+<div class="jquery-script-ads"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-2783044520727903";
+/* jQuery_demo */
+google_ad_slot = "2780937993";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+<div class="jquery-script-clear"></div>
+</div>
+</div>
+<div class="container">
+	<h1>jQuery Number Divider Plugin Demos</h1>
+    <label>Divide thousand(1000..9999)</label>
+    <input id="checkbox" title="Divide thousand(1000..9999)" type="checkbox" name="checkbox" checked="checked" />
+    <select id="select" title="delimiters">
+      <option value=" ">' '(space)</option>
+      <option value=".">'.'(dot)</option>
+      <option selected="selected" value=",">','(comma)</option>
+    </select>
+    <br><br>
+    <h3>Using in inputs</h3>
+    <input class="divide form-control" id="input" type="text" placeholder="Enter the number" value="3000"><br>
+<br>
+
+    <button onclick="alert($('#input').val());" class="btn btn-danger">Get clear value</button>
+    <br><br>
+    <input class="divide form-control" id="range_label" disabled="disabled" type="text" value="5000"><br>
+<br>
+
+    <input id="range_input" max="1000000" min="5000" step="5000" type="range" style="width: 250px;">
+    <br><br><br>
+    <h3>Using in HTML tags</h3>
+    <p><label>Also you can divide numbers in simple HTML tags</label></p>
+    <div class="divide">1000</div>
+    <p><span class="divide">10000</span></p>
+    <p><label class="divide">1000000</label></p>
+    <br>
+    <h3>Using in form</h3>
+    <p class="important">
+        <label>If you wish use it in form, plugin will automatically do it for you!</label>
+        <label>Formatted values will be auto replaced on original values</label>
+    </p>
+    <p><label>Click on the button for to show form data in browser address panel</label></p>
+    <div class="form-example">
+        <form method="get">
+            <label>Simple GET form</label>
+            <p><input class="divide" name="login" placeholder="Enter login" required type="text"></p>
+            <p><input class="divide" name="password" placeholder="Enter password" required type="text"></p>
+            <button type="submit">Confirm</button>
+        </form>
+    </div>
+</div>
+    <script type="text/javascript">
+        var input = $('#input');
+        var checkbox = $('#checkbox');
+        var select = $('#select');
+        var rangeLabel = $('#range_label');
+
+        $('.divide').divide();
+
+        $(select).add(checkbox).change(function () {
+            $('.divide').divide({
+                delimiter:select.val(),
+                divideThousand:checkbox.is(":checked")
+            });
+        });
+
+        $('#range_input').on("input change", function() {
+            rangeLabel.val(this.value);
+        });
+    </script>
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>
+</html>

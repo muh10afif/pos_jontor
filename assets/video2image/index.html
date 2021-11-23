@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset=utf-8 />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video2Image Example</title>
+</head>
+<body>
+
+<div align="center">
+    <h1>Video2Image Example</h1>
+    <p>Do not try to run locally, browser permissions require running with web server only</p>
+    <br/><br/>
+    <canvas id="canvas1"></canvas>
+    <br/>
+    <button id="btnStop">Stop</button>
+    <button id="btnPlay">Play</button>
+    <button id="btnCapture">Capture</button>
+
+    <br/><br/><br/>
+
+    <div id="imgCapture">Capture will be here</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="video2image.js"></script>
+<script>
+    $(function () {
+
+        var isSupported = $("#canvas1").video2image('isSupported');
+
+        if(isSupported) {
+
+            $("#canvas1").video2image({
+                width : 320,
+                height : 240,
+                autoplay : true,
+                onsuccess : function() {
+                    console.log('success');
+                },
+                onerror: function() {
+                    console.log('error');
+                }
+            });
+
+        } else {
+            var canvas = document.getElementById("canvas1");
+            var context = canvas.getContext("2d");
+            context.font = "bold 16px Arial";
+            context.fillText("Capture not supported", (canvas.width / 2) - 90, (canvas.height / 2) + 8);
+            console.log('video2image is not supported by your browser');
+        }
+
+        $("#btnStop").on("click", function (event) {
+            $("#canvas1").video2image('stop');
+        });
+
+        $("#btnPlay").on("click", function (event) {
+            $("#canvas1").video2image('start');
+        });
+
+        $("#btnCapture").on("click", function (event) {
+            var dataurl = $("#canvas1").video2image('capture');
+            $("#imgCapture").html('<img src="' + dataurl + '"/>');
+        });
+
+    });
+</script>
+
+</body>
+</html>

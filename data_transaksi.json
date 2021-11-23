@@ -1,0 +1,10 @@
+[
+    {
+        "id_produk": 0,
+        "nama_produk": "",
+        "harga": 0,
+        "qty": 0,
+        "diskon": 0,
+        "total": 0
+    }
+]
